@@ -169,4 +169,17 @@ public class NormalHangmanTest {
 		assertTrue(hm.gameOver());
 		assertFalse(hm.isWin());
 	}
+	
+	@Test
+	public void testUpdateStateCorrect() {
+		boolean test = hm.updateState('S');
+		assertTrue(test);
+	}
+	
+	@Test 
+	public void testUpdateStateWrong() {
+		boolean test = hm.updateState('U');
+		assertFalse(test);
+		
+	}
 }

@@ -9,7 +9,7 @@ public class GUI_PlayGame implements ActionListener
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
-    private HangmanGame game;
+    private HangmanGameAbstract game;
     private char inputLetter;
     private boolean isEvil = true;
     private JLabel result;
@@ -17,7 +17,7 @@ public class GUI_PlayGame implements ActionListener
 
     public GUI_PlayGame(int letters, int guesses)
     {
-    	game = new EvilHangMan(letters, guesses);
+    	game = new EvilHangmanGameNew(letters, guesses);
     	
     }
     
@@ -102,7 +102,7 @@ public class GUI_PlayGame implements ActionListener
                 String secretString = game.getSecretWord();
                 int guessesRemaining = game.numGuessesRemaining();
                 String letterHistory = game.lettersGuessed();
-                game = new NormalHangMan(secretString, guessesRemaining,letterHistory);//turn the evil to regular hangman
+                game = new NormalHangmanGameNew(secretString, guessesRemaining,letterHistory);//turn the evil to regular hangman
                 isEvil = false;
                 game.makeGuess(nextLetter);//re-value the user guess when turn to the regular hangman for the first time
             }
@@ -122,11 +122,11 @@ public class GUI_PlayGame implements ActionListener
         {
             if (game.isWin())
             {
-                new GUI_Winner(game.displayGameState(),frame);
+                new GUI_Winner(game.displayGameState(),frame, "You are the Winner!");
             }
             else
             {
-                new GUI_Loser(game.getSecretWord(),frame);
+                new GUI_Loser(game.getSecretWord(),frame, "You are the Loser!");
             }
         }
     }
