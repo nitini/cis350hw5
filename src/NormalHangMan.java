@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 
 public class NormalHangMan extends HangmanGame {
 	
-	public NormalHangMan (String secretWord, int numGuesses, String letterHistory) {
+	public NormalHangMan (String secretWord, int numGuesses, ArrayList<Character> letterHistory) {
 		super(secretWord, numGuesses, letterHistory);
 		super.numLettersLeft = secretWord.length();
 		for(int i = 0; i < secretWord.length(); i++)
@@ -39,16 +41,13 @@ public class NormalHangMan extends HangmanGame {
     	if (Character.isLetter(ch) == false) return false;
         super.guess = ch;
         boolean tempB = updateState(ch);
-        if (!alreadyGuessed(ch))
-        {
-            super.letterHistory = super.letterHistory + super.guess;
+        if (!alreadyGuessed(ch)) {
+            super.letterHistory.add((Character) super.guess);
 
-            if (tempB)
-            {
+            if (tempB) {
                 super.numLettersLeft--;
             }
-            else
-            {
+            else {
                 super.guessesRemaining--;
             }
             return tempB;

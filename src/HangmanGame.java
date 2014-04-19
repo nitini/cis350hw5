@@ -1,15 +1,17 @@
+import java.util.ArrayList;
+
 
 public abstract class HangmanGame {
 	
 	protected String secretWord = "";
 	protected int guessesRemaining;
 	protected String state = "";
-	protected String letterHistory = "";
+	protected ArrayList<Character> letterHistory = new ArrayList<Character>();
 	protected char guess;
 	protected int stringLength;
 	protected int numLettersLeft;
 	
-	public HangmanGame(String secretWord, int numGuesses, String letterHistory) {
+	public HangmanGame(String secretWord, int numGuesses, ArrayList<Character> letterHistory) {
 		this.secretWord = secretWord;
 		this.guessesRemaining = numGuesses;
 		this.letterHistory = letterHistory;
@@ -40,13 +42,13 @@ public abstract class HangmanGame {
 		return state;
 	}
 	
-	public String lettersGuessed () {
+	public ArrayList<Character> lettersGuessed () {
 		return letterHistory;
 	}
 	
 	public boolean alreadyGuessed(char c) {
-		for (int i = 0; i < letterHistory.length(); i++) {
-			if(letterHistory.charAt(i) == c) {
+		for (char ch : letterHistory) {
+			if (ch == c) {
 				return true;
 			}
 		}

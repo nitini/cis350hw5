@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class GUI_PlayGame implements ActionListener
 {
@@ -101,7 +102,7 @@ public class GUI_PlayGame implements ActionListener
                 result.setText("Yes!");
                 String secretString = game.getSecretWord();
                 int guessesRemaining = game.numGuessesRemaining();
-                String letterHistory = game.lettersGuessed();
+                ArrayList<Character> letterHistory = game.lettersGuessed();
                 game = new NormalHangMan(secretString, guessesRemaining,letterHistory);//turn the evil to regular hangman
                 isEvil = false;
                 game.makeGuess(nextLetter);//re-value the user guess when turn to the regular hangman for the first time
@@ -116,7 +117,7 @@ public class GUI_PlayGame implements ActionListener
             result.setText("Nope!");
         }
 
-        label2.setText("Secret Word: "+game.displayGameState());
+        label2.setText("Secret Word: "+ game.displayGameState());
         label3.setText(String.valueOf("Guesses Remaining: "+ game.numGuessesRemaining()));
         if (game.gameOver())
         {

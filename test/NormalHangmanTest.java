@@ -1,6 +1,8 @@
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +14,7 @@ public class NormalHangmanTest {
 
 	@Before
 	public void setUp() throws Exception {
-		hm = new NormalHangMan(WORD, 8, "");
+		hm = new NormalHangMan(WORD, 8, new ArrayList<Character>());
 	}
 	
 	@Test
